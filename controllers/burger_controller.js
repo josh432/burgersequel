@@ -7,7 +7,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/burgers', function (req, res) {
-  db.Burger.findAll().then(function (data) {
+  db.Burger.findAll({}).then(function (data) {
     var hbsObject = { burger: data };
     res.render('index', hbsObject);
   });
