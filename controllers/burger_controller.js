@@ -8,15 +8,15 @@ router.get('/', function (req, res) {
 
 router.get('/burgers', function (req, res) {
   db.Burger.findAll({}).then(function (data) {
-    var hbsObject = { burger: data };
+    var hbsObject = { burgers: data };
     res.render('index', hbsObject);
   });
 });
 
 
 router.post('/burgers', function(req, res) {
-  db.Burger.create({burger_name: req.body.burger_name}, function(data) {
-    res.redirect('/');
+  db.Burger.create({burger_name: req.body.burger_name}).then(function(data) {
+    res.redirect('/burgers');
   });
 });
 
