@@ -21,10 +21,10 @@ router.post('/burgers', function(req, res) {
 });
 
 router.put('/burgers/:id', function(req, res){
-	var condition = "id = " + req.params.id;
+	
 	  db.Burger.update({
-      devoured: true
-   }, condition, function(data) {
+      devoured: true}, {where: {id:req.params.id}}).then(function(data) {
+        console.log(data);
     res.redirect('/');
   });
 
